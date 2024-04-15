@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.naturellementfrancais.com/medias/images/meteo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/meteo.css">
+    <title>Météo Essaouira</title>
+</head>
+<body>
+    <div class="container">
+         <h1>Météo Essaouira </h1>
+
+        <p>Date : {{ date }}</p>
+        <p>Jour : {{ jour }}</p>
+        <div class="row">
+            <div class="col-md-2">
+                <p>L'heure :</p>
+                {% for i in range(0,24) %}
+                    {% if i % 3 == 0 %}
+                        {{ i }}:00<br><hr>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-md-2">
+                <p>Température :</p>
+                {% for temperature in ListeTemperatures %}
+                    {{ temperature }} °C <br><hr>
+                {% endfor %}
+            </div>
+            <div class="col-md-2">
+                <p>Couverture nuageuse :</p>
+                {% for cloud_cover in ListeCloud_cover %}
+                    {{ cloud_cover }}% <br><hr>
+                {% endfor %}
+            </div>
+            <div class="col-md-2">
+                <p>Précipitation :</p>
+                {% for precipitation in ListePrecipitation %}
+                    {{ precipitation }} mm <br><hr>
+                {% endfor %}
+            </div>
+            <div class="col-md-2">
+                <p>Vitesse du vent :</p>
+                {% for k in ListeWindspeed %}
+                    {{ k}} km/h <br><hr>
+                {% endfor %}
+            </div>
+            <div class="col-md-2">
+                <br>
+                {% for c in listimages %}
+                <img src="{{ url_for('static', filename='images/'+c) }}"height="36"><br><br>
+                
+                {% endfor %}
+            
+            </div>
+        </div>
+    </div>
+</body>
+</html>

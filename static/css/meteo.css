@@ -1,0 +1,8 @@
+h1,p,svg{
+color: aqua;
+}
+.two{
+    display: inline-block;
+    width: 50%; 
+    color: blue;
+}
